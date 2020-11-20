@@ -1,0 +1,12 @@
+{
+  "name": "labreact",
+  "displayName": "labreact",
+  "expo": {
+    "name": "labreact",
+    "slug": "labreact",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
