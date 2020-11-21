@@ -2,11 +2,23 @@
   "name": "labreact",
   "displayName": "labreact",
   "expo": {
-    "name": "labreact",
-    "slug": "labreact",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "name": "AnimeList",
+    "slug": "AnimeList",
+	"version": "1.0.0",
+	
+    "platforms": [
+			"android",
+			"ios"
+		],
+		"ios": {
+			"bundleIdentifier": "cr.ac.ucr.animeList",
+			"buildNumber": "1.0.0"
+		},
+		"android": {
+			"package": "cr.ac.ucr.animeList",
+			"versionCode": 1
+		},
+		"description": "",
+    "githubUrl": "https://github.com/JoseCastro907/labreact"
   }
 }
