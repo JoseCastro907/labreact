@@ -47,7 +47,7 @@ const anime = ({ anime , navigation }) => {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: constants.COLORS.GRAY,
+        backgroundColor: constants.COLORS.DARK_BLUE2,
         marginBottom: 65,
         borderRadius: 12,
 		flexDirection: 'row',
@@ -81,6 +81,9 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
         paddingTop: 2,
         paddingBottom: 2,
+        height: 22,
+        width: 60,
+        alignItems: "center",
 
     },
     textScore:{
