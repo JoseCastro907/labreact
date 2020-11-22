@@ -7,6 +7,7 @@ export const DetailsScreen = ({navigation, route }) => {
     return (
         <View>
             <Text>{anime.title}</Text>
+            <Text>{anime.score}</Text>
         </View>
     )
 }

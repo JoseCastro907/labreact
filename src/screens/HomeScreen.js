@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
-import { View, Text, Pressable, StyleSheet, FlatList } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { View, Text, Pressable, StyleSheet, FlatList,SafeAreaView } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import constants from '../utils/constants';
 
 import axios from '../utils/axios';
 
 import Anime from '../components/Anime';
+import { fontsName } from '../utils/fonts';
 
 export const HomeScreen = ({ navigation, route }) => {
 
@@ -21,7 +24,12 @@ export const HomeScreen = ({ navigation, route }) => {
     }, [setAnimes]);
 
     return (
-        <View>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.titleContainer}>
+                <MaterialCommunityIcons name="menu" size={38} color="white" />  
+                <Text style={styles.title}>AnimeList</Text>
+                <FontAwesome5 name="search" size={22} color="white" />
+            </View>
             <FlatList
                 style={styles.list}
                 data={animes}
@@ -29,7 +37,7 @@ export const HomeScreen = ({ navigation, route }) => {
                 keyExtractor={(item) => item.id}
             />
             
-        </View>
+        </SafeAreaView>
     );
 };
 
@@ -41,6 +49,18 @@ const styles = StyleSheet.create({
     },
     list:{
         padding: 20,
-
+    },
+    titleContainer:{    
+        paddingHorizontal: 20,
+        flexDirection: "row",
+        paddingBottom: 8,
+        paddingTop: 18,
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    title:{
+        fontFamily: fontsName.TITLE,
+        fontSize: 22,
+        color: constants.COLORS.WHITE,
     },
 });

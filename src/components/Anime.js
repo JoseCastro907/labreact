@@ -1,8 +1,13 @@
 import React from 'react'
-import { View, Text,StyleSheet, Image, Pressable} from 'react-native'
+import { View,StyleSheet, Image, Pressable} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 
+import Text from './TextCustom';
+
 import constants from '../utils/constants';
+import { fontsName } from '../utils/fonts';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { color } from 'react-native-reanimated';
 
 const anime = ({ anime , navigation }) => {
 
@@ -10,7 +15,8 @@ const anime = ({ anime , navigation }) => {
 
     const loadAnime= () => {
         navigation.navigate(constants.SCREEN.DETAILS, { anime });
-    };
+    }; 
+
 
     return (
         <Pressable style={styles.card} onPress={loadAnime}>
@@ -18,15 +24,22 @@ const anime = ({ anime , navigation }) => {
                 style={styles.poster}
                 source={{uri:image_url}}   
             />
-            <View style={styles.container}>
+            <View style={{ flex: 1, marginLeft: 30 }}>
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>{title}</Text>
+                    <Text  numberOfLines={2} fontFamily="bold" style={styles.title}>{title}</Text>
+                   
                 </View>
-                <View style={styles.datesContainer}>
-                    <Text style={styles.startDate}>{start_date}</Text>
-                    <Text>{end_date}</Text>
+                <View style={styles.detailsContainer}>
+                    <View style={styles.datesContainer}>
+                        <Text style={styles.textDate}>{start_date}  -  </Text>
+                        <Text style={styles.textDate}>{end_date}</Text>
+                    </View>
+                    <View style={styles.scoreContainer}>
+                        <View style={styles.score}>
+                            <Text style={styles.textScore}>{score}</Text>
+                        </View>
+                    </View>
                 </View>
-                    <Text>{score}</Text>
             </View>
         </Pressable>
     );
@@ -34,39 +47,62 @@ const anime = ({ anime , navigation }) => {
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: constants.COLORS.WHITE,
-        marginBottom: 12,
-        borderRadius: 25,
+        backgroundColor: constants.COLORS.GRAY,
+        marginBottom: 65,
+        borderRadius: 12,
 		flexDirection: 'row',
-		position: 'relative',
-    },
-    container:{
-        flexDirection: 'column',
-        marginLeft: 10,
+        position: 'relative',
+        alignItems: 'center',
     },
     titleContainer:{
         flexDirection: "row",
+        justifyContent: "space-between",
+
     },
     title:{
-        color: constants.COLORS.GREEN,
-        fontWeight: "bold",
-        flexGrow: 1,
-        fontSize: 16,
+        color: constants.COLORS.WHITE,
+        fontSize: 32,
+        marginTop: 15,
+
+    },
+    detailsContainer:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 5,
+    },
+    scoreContainer:{
+        marginTop: 40,
+        marginRight: 30,        
     },
     score:{
+        backgroundColor: constants.COLORS.RED,
+        borderRadius: 12,
+        paddingRight: 16,
+        paddingLeft: 16,
+        paddingTop: 2,
+        paddingBottom: 2,
 
+    },
+    textScore:{
+        fontSize: 15,
+        color: constants.COLORS.WHITE,
     },
     datesContainer:{
         flexDirection: 'row',
+        marginLeft: 15,
+
     },
-    startDate:{
-        marginRight: 20,
+    textDate:{
+        color: constants.COLORS.WHITE,
+        fontSize: 12,
     },
     poster:{
-        width: 100,
-        height: 133,
-        borderTopLeftRadius: 20,
-        borderBottomLeftRadius: 20,
+        width: 120,
+        height: 180,
+        borderTopLeftRadius: 12,
+        borderBottomLeftRadius: 12,
+        position: 'relative',
+
     }
 
 }); 

@@ -15,13 +15,16 @@ const Router = () => {
                 initialRouteName={constants.SCREEN.HOME} 
                 screenOptions={{ headerStyle:{ 
                                     backgroundColor: constants.COLORS.LIGHT_GRAY,
-                                    },}}>   
+                                    },
+                                    }}>   
 
                 <Stack.Screen 
                     name={constants.SCREEN.HOME} 
                     component={HomeScreen} 
                     options={{
                         title: 'ANIMELIST',
+                        headerShown: false,
+
                         }}/>
 
 
