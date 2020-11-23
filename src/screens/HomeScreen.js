@@ -34,7 +34,7 @@ export const HomeScreen = ({ navigation, route }) => {
                 style={styles.list}
                 data={animes}
                 renderItem={({ item }) => <Anime anime={item} navigation={navigation}/> }
-                keyExtractor={(item) => `${item.id}`}
+                keyExtractor={(item) => item.id}
             />
             
         </SafeAreaView>
@@ -62,6 +62,6 @@ const styles = StyleSheet.create({
         fontFamily: fontsName.TITLE,
         fontSize: 22,
         color: constants.COLORS.WHITE,
-        
+         
     },
 });

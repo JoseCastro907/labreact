@@ -14,7 +14,7 @@ const Router = () => {
             <Stack.Navigator 
                 initialRouteName={constants.SCREEN.HOME} 
                 screenOptions={{ headerStyle:{ 
-                                    backgroundColor: constants.COLORS.LIGHT_GRAY,
+                                    backgroundColor: constants.COLORS.DARK_BLUE,
                                     },
                                     }}>   
 
@@ -32,7 +32,10 @@ const Router = () => {
                     name={constants.SCREEN.DETAILS} 
                     component={DetailsScreen} 
                     options={{
-                        title: 'Details',
+                        title: '',
+                        headerBackTitleVisible: false,
+                        headerTintColor: constants.COLORS.WHITE,
+                        headerTitle:false,
                         }}/>
 
             </Stack.Navigator>

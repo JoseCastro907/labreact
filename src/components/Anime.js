@@ -17,7 +17,7 @@ const anime = ({ anime , navigation }) => {
         navigation.navigate(constants.SCREEN.DETAILS, { anime });
     }; 
 
-
+ 
     return (
         <Pressable style={styles.card} onPress={loadAnime}>
             <Image
