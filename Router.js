@@ -19,7 +19,6 @@ const Router = () => {
                                     backgroundColor: constants.COLORS.DARK_BLUE,
                                     },
                                     }}>   
-
                 <Stack.Screen 
                     name={constants.SCREEN.HOME} 
                     component={HomeScreen} 
@@ -28,19 +27,13 @@ const Router = () => {
                         headerShown: false,
 
                         }}/>
-
-
                 <Stack.Screen
                     name={constants.SCREEN.DETAILS} 
                     component={DetailsScreen} 
                     options={{
-                        title: '',
                         headerBackTitleVisible: false,
-                        headerTintColor: constants.COLORS.WHITE,
                         headerTitle:false,
-                        headerStyle: {
-                            backgroundColor: constants.COLORS.DARK_BLUE,
-                        },
+                        headerTransparent: true,
                         headerLeft: (props) =>
                             props.canGoBack && (
                                 <Fontisto
@@ -50,7 +43,6 @@ const Router = () => {
                                     {...props}
                                     style={{ marginLeft: 20 }}
                                 />
-                                
                             ),
                         }}/>
 

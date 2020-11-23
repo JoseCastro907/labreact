@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {  View,  ScrollView,  Text,  Pressable,  Image,  StyleSheet,  Dimensions,  SafeAreaView,} from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import {  View,   Text,  Image,  StyleSheet,  Dimensions,  SafeAreaView, } from "react-native";
 import constants from "../utils/constants";
 
 import axios from "../utils/axios";
 import { fontsName } from "../utils/fonts";
 
-import Stars from '../components/Stars';
+import Stars from "../components/Stars";
 
-//const { width, height } = Dimensions.get("screen");
 
 export const DetailsScreen = ({ navigation, route }) => {
   const { anime } = route.params;
@@ -31,36 +29,34 @@ export const DetailsScreen = ({ navigation, route }) => {
     airing = "Currently Airing";
   }
 
-  const starsScore = animeInfo.score;
-
-  if(starsScore>9){
-
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{animeInfo.title}</Text>
+        <Text numberOfLines={3} style={styles.title}>
+          {animeInfo.title}
+        </Text>
       </View>
 
       <View style={styles.card}>
         <Image style={styles.img} source={{ uri: animeInfo.image_url }} />
         <View style={styles.containerDescription}>
           <Text style={styles.subtitle}>
-          Aired: {animeInfo.start_date}- {animeInfo.end_date}
+            Aired: {animeInfo.start_date}- {animeInfo.end_date}
           </Text>
           <Text style={styles.subtitle}>Episodes: {animeInfo.episodes}</Text>
           <Text style={styles.subtitle}>Type: {animeInfo.type}</Text>
           <Text style={styles.subtitle}>Status: {airing}</Text>
           <Text style={styles.subtitle}>Rating: {animeInfo.rated}</Text>
           <View style={styles.starsContainer}>
-              <Stars starsSum={animeInfo.score}></Stars>     
+            <Stars starsSum={animeInfo.score}></Stars>
           </View>
         </View>
       </View>
       <View style={styles.synopsis}>
-          <Text style={styles.subtitle}>Synopsis: </Text>
-          <Text numberOfLines={5} style={styles.synopsisText}>{animeInfo.synopsis}</Text>
+        <Text style={styles.subtitle}>Synopsis: </Text>
+        <Text numberOfLines={5} style={styles.synopsisText}>
+          {animeInfo.synopsis}
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -69,6 +65,7 @@ export const DetailsScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 20,
     backgroundColor: constants.COLORS.DARK_BLUE,
   },
   img: {
@@ -76,9 +73,9 @@ const styles = StyleSheet.create({
     height: 350,
   },
   titleContainer: {
-    paddingHorizontal: 20,
+    width: "100%",
+    paddingHorizontal: 60,
     flexDirection: "row",
-    paddingBottom: 8,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -90,8 +87,8 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     marginTop: 50,
-    marginRight: 20,
-    marginLeft: 20,
+    marginRight: 10,
+    marginLeft: 10,
     backgroundColor: constants.COLORS.DARK_BLUE2,
   },
   containerDescription: {
@@ -104,18 +101,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: constants.COLORS.WHITE,
   },
-  synopsis:{
-      flexDirection: "row",
-      marginRight: 20,
-      marginLeft: 20,
+  synopsis: {
+    flexDirection: "row",
+    marginRight: 20,
+    marginLeft: 20,
   },
-  synopsisText:{
-      fontFamily: fontsName.REGULAR,
-      fontSize: 14,
-      color: constants.COLORS.WHITE,
-
+  synopsisText: {
+    fontFamily: fontsName.REGULAR,
+    fontSize: 14,
+    color: constants.COLORS.WHITE,
   },
-  starsContainer:{
-      flexDirection: "row",
+  starsContainer: {
+    flexDirection: "row",
   },
 });
