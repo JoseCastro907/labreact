@@ -12,5 +12,5 @@ module.exports = {
         RED: '#CA3E3B',
         DARK_BLUE: '#0E1726',
         DARK_BLUE2: '#172333',
-    },
+    }
 };
