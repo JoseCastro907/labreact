@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from "react";
-import {  View,   Text,  Image,  StyleSheet,  Dimensions,  SafeAreaView, } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  SafeAreaView,
+} from "react-native";
 import constants from "../utils/constants";
 
+import { DateTime } from "luxon";
+
 import axios from "../utils/axios";
+
 import { fontsName } from "../utils/fonts";
 
 import Stars from "../components/Stars";
 
+const Luxon = DateTime.local().setLocale("en");
+
+/*dt.setLocale('fr').toLocaleString(DateTime.DATE_SHORT);
+const date = DateTime.fromISO(release_date).setLocale('es').toFormat('MMM, y');
+*/
 
 export const DetailsScreen = ({ navigation, route }) => {
   const { anime } = route.params;
@@ -28,6 +43,10 @@ export const DetailsScreen = ({ navigation, route }) => {
   if (animeInfo.airing) {
     airing = "Currently Airing";
   }
+  const startDate = DateTime.fromISO(animeInfo.start_date)
+    .setLocale("en")
+    .toFormat("dd/MMM/yyyy");
+  const endDate = DateTime.fromISO(animeInfo.end_date).toFormat("dd/MMM/yyyy");
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,13 +59,28 @@ export const DetailsScreen = ({ navigation, route }) => {
       <View style={styles.card}>
         <Image style={styles.img} source={{ uri: animeInfo.image_url }} />
         <View style={styles.containerDescription}>
-          <Text style={styles.subtitle}>
-            Aired: {animeInfo.start_date}- {animeInfo.end_date}
-          </Text>
-          <Text style={styles.subtitle}>Episodes: {animeInfo.episodes}</Text>
-          <Text style={styles.subtitle}>Type: {animeInfo.type}</Text>
-          <Text style={styles.subtitle}>Status: {airing}</Text>
-          <Text style={styles.subtitle}>Rating: {animeInfo.rated}</Text>
+          <View style={styles.textDescriptionContainer}>
+            <Text style={styles.subtitle}>Aired: </Text>
+            <Text style={styles.textDescription}>
+              {startDate} - {endDate}
+            </Text>
+          </View>
+          <View style={styles.textDescriptionContainer}>
+            <Text style={styles.subtitle}>Episodes:  </Text>
+            <Text style={styles.textDescription}>{animeInfo.episodes}</Text>
+          </View>
+          <View style={styles.textDescriptionContainer}>
+            <Text style={styles.subtitle}>Type:  </Text>
+            <Text style={styles.textDescription}>{animeInfo.type}</Text>
+          </View>
+          <View style={styles.textDescriptionContainer}>
+            <Text style={styles.subtitle}>Status:  </Text>
+            <Text style={styles.textDescription}>{airing}</Text>
+          </View>
+          <View style={styles.textDescriptionContainer}>
+            <Text style={styles.subtitle}>Rating:  </Text>
+            <Text style={styles.textDescription}>{animeInfo.rated}</Text>
+          </View>
           <View style={styles.starsContainer}>
             <Stars starsSum={animeInfo.score}></Stars>
           </View>
@@ -69,8 +103,8 @@ const styles = StyleSheet.create({
     backgroundColor: constants.COLORS.DARK_BLUE,
   },
   img: {
-    width: 210,
-    height: 350,
+    width: 170,
+    height: 250,
   },
   titleContainer: {
     width: "100%",
@@ -105,6 +139,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginRight: 20,
     marginLeft: 20,
+    marginTop: 20,
   },
   synopsisText: {
     fontFamily: fontsName.REGULAR,
@@ -113,5 +148,14 @@ const styles = StyleSheet.create({
   },
   starsContainer: {
     flexDirection: "row",
+  },
+  textDescriptionContainer: {
+    flexDirection: "row",
+  },
+  textDescription: {
+    fontFamily: fontsName.REGULAR,
+    fontSize: 12,
+    color: constants.COLORS.WHITE,
+    marginTop: 3,
   },
 });
