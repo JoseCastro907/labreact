@@ -19,10 +19,6 @@ import Stars from "../components/Stars";
 
 const Luxon = DateTime.local().setLocale("en");
 
-/*dt.setLocale('fr').toLocaleString(DateTime.DATE_SHORT);
-const date = DateTime.fromISO(release_date).setLocale('es').toFormat('MMM, y');
-*/
-
 export const DetailsScreen = ({ navigation, route }) => {
   const { anime } = route.params;
   const nameAnime = anime.title;

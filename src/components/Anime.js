@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
 
     },
     textDate:{
-        color: constants.COLORS.WHITE,
+        color: constants.COLORS.BLUE_LIGHT,
+
         fontSize: 12,
     },
     poster:{
