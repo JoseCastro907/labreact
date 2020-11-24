@@ -88,9 +88,7 @@ export const DetailsScreen = ({ navigation, route }) => {
       </View>
       <View style={styles.synopsis}>
         <Text style={styles.subtitle}>Synopsis: </Text>
-        <Text numberOfLines={5} style={styles.synopsisText}>
-          {animeInfo.synopsis}
-        </Text>
+        <Text style={styles.synopsisText}>{animeInfo.synopsis}</Text>
       </View>
     </SafeAreaView>
   );
@@ -132,19 +130,20 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontFamily: fontsName.BOLD,
-    fontSize: 16,
+    fontSize: 18,
     color: constants.COLORS.WHITE,
   },
   synopsis: {
     flexDirection: "row",
-    marginRight: 20,
-    marginLeft: 20,
-    marginTop: 20,
+    margin: 20,
+    flexWrap: "wrap",
   },
   synopsisText: {
     fontFamily: fontsName.REGULAR,
-    fontSize: 14,
+    fontSize: 16,
+    flexWrap: "wrap",
     color: constants.COLORS.WHITE,
+    marginTop: 5,
   },
   starsContainer: {
     flexDirection: "row",
